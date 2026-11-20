@@ -489,7 +489,7 @@
                 </button>
                 <button type="button" id="tab-pesangon" onclick="switchCalculator('pesangon')" class="calc-tab-btn px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all bg-white text-forest-900 border border-sage-200 hover:border-forest-700">
                     <i data-lucide="briefcase" class="w-4 h-4"></i>
-                    <span>4. Dana Pesangon (PP 35/2021)</span>
+                    <span>4. Dana Pesangon PHK (UU 27/2026)</span>
                 </button>
                 <button type="button" id="tab-cicilan" onclick="switchCalculator('cicilan')" class="calc-tab-btn px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all bg-white text-forest-900 border border-sage-200 hover:border-forest-700">
                     <i data-lucide="credit-card" class="w-4 h-4"></i>
@@ -624,12 +624,22 @@
                             </div>
                         </div>
 
-                        <!-- PANEL 4: KALKULATOR DANA PESANGON (PP NO. 35 TAHUN 2021) -->
+                        <!-- PANEL 4: KALKULATOR DANA PESANGON PHK (UU NO. 27 TAHUN 2026) -->
                         <div id="panel-pesangon" class="calc-panel hidden space-y-5">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-forest-700">Regulasi UU Cipta Kerja</span>
-                                <h3 class="font-editorial text-2xl sm:text-3xl font-bold text-forest-900 mt-1">Kalkulator Dana Pesangon (PP 35/2021)</h3>
-                                <p class="text-xs sm:text-sm text-forest-800/75 mt-1">Hitung estimasi Uang Pesangon (UP), UPMK, dan UPH sesuai aturan ketenagakerjaan terbaru.</p>
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-forest-700">Regulasi Terbaru &bull; Menggantikan PP 35/2021</span>
+                                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gold-500/20 border border-gold-500/40 text-forest-900 text-[11px] font-bold">
+                                        UU No. 27/2026
+                                    </span>
+                                </div>
+                                <h3 class="font-editorial text-2xl sm:text-3xl font-bold text-forest-900 mt-1">Kalkulator Pesangon PHK (UU No. 27/2026 &amp; PPh 21)</h3>
+                                <p class="text-xs sm:text-sm text-forest-800/75 mt-1">Hitung estimasi Uang Pesangon (UP), UPMK, UPH/Uang Pisah, potongan PPh 21 Final, serta pesangon bersih (netto).</p>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-sage-100/90 border border-gold-500/40 text-xs text-forest-900 leading-relaxed">
+                                <strong class="text-forest-950 block mb-0.5">Pembaruan Regulasi (Berlaku 28 Oktober 2026):</strong>
+                                Mengacu pada <strong>UU No. 27 Tahun 2026 tentang Pelindungan Ketenagakerjaan</strong> (menggantikan PP 35/2021). Faktor pengali <strong>0,5&times; dan 0,75&times; dihapus</strong>, pengali usia pensiun naik menjadi <strong>2&times; UP</strong>, dan perusahaan (non-UMK) wajib menyediakan <strong>Dana Cadangan Pesangon</strong> (Pasal 253).
                             </div>
 
                             <div class="space-y-4">
@@ -642,15 +652,86 @@
                                     <input type="number" step="0.5" min="0" max="50" id="pesTenure" value="0" onfocus="clearZeroOnFocus(this)" onblur="restoreZeroOnBlur(this)" oninput="calcPesangon()" class="w-full px-4 py-3 rounded-xl border border-sage-300 focus:ring-2 focus:ring-forest-700 focus:outline-none font-semibold text-forest-900">
                                 </div>
                                 <div>
-                                    <label for="pesReason" class="block text-sm font-semibold text-forest-900 mb-1.5">Alasan PHK / Pensiun (PP 35/2021)</label>
+                                    <label for="pesReason" class="block text-sm font-semibold text-forest-900 mb-1.5">Alasan PHK (Sesuai UU No. 27/2026)</label>
                                     <select id="pesReason" onchange="calcPesangon()" class="w-full px-4 py-3 rounded-xl border border-sage-300 focus:ring-2 focus:ring-forest-700 focus:outline-none font-semibold text-forest-900 bg-white">
-                                        <option value="pensiun">Pensiun Normal (1.75x UP + 1x UPMK + UPH)</option>
-                                        <option value="efisiensi">Efisiensi / Tutup Perusahaan (1x UP + 1x UPMK + UPH)</option>
-                                        <option value="meninggal">Meninggal Dunia (2x UP + 1x UPMK + UPH)</option>
-                                        <option value="resign">Mengundurkan Diri (UPH / Uang Pisah)</option>
+                                        <option value="pensiun">Memasuki Usia Pensiun (2&times; UP + 1&times; UPMK) &mdash; Pasal 247</option>
+                                        <option value="merger_tolak">Merger/Akuisisi: Pengusaha Menolak (2&times; UP + 1&times; UPMK) &mdash; Pasal 236</option>
+                                        <option value="sakit">Sakit Berkepanjangan &gt;12 Bln (2&times; UP + 2&times; UPMK)</option>
+                                        <option value="meninggal">Pekerja Meninggal Dunia (2&times; UP + 1&times; UPMK) &mdash; Pasal 249</option>
+                                        <option value="tutup_nonrugi">Perusahaan Tutup Permanen Bukan Rugi (1&times; UP + 1,5&times; UPMK)</option>
+                                        <option value="tutup_rugi">Perusahaan Tutup Rugi / Pailit / Force Majeure (1&times; UP + 1&times; UPMK) &mdash; Pasal 237&ndash;240</option>
+                                        <option value="sp3">Pelanggaran Setelah SP 1, 2, dan 3 (1&times; UP + 1&times; UPMK) &mdash; Pasal 244</option>
+                                        <option value="resign">Resign / Mangkir 5 Hari (UPH + Uang Pisah min. 1 Bln Upah) &mdash; Pasal 233</option>
                                     </select>
                                 </div>
+                                <div>
+                                    <label for="pesUph" class="block text-sm font-semibold text-forest-900 mb-1.5">Uang Penggantian Hak (UPH) &amp; Uang Pisah (Rp)</label>
+                                    <input type="text" inputmode="numeric" id="pesUph" value="0" onfocus="clearZeroOnFocus(this)" onblur="restoreZeroOnBlur(this)" oninput="formatRupiahInput(this); calcPesangon();" class="w-full px-4 py-3 rounded-xl border border-sage-300 focus:ring-2 focus:ring-forest-700 focus:outline-none font-semibold text-forest-900">
+                                    <p class="text-[11px] text-forest-800/70 mt-1">Catatan UU 27/2026: Uang pisah resign/mangkir minimal 1 bulan upah jika belum diatur di PK/PP/PKB.</p>
+                                </div>
                             </div>
+
+                            <!-- Tabel Ringkas Acuan Regulasi & Tarif PPh 21 Final -->
+                            <details class="rounded-2xl bg-sage-50 border border-sage-200 p-4 text-xs text-forest-900">
+                                <summary class="font-bold cursor-pointer select-none text-forest-900 flex items-center justify-between">
+                                    <span>Lihat Tabel Pengali UU 27/2026, Masa Kerja &amp; Tarif PPh 21 Final</span>
+                                    <span class="text-forest-700 text-[11px] font-semibold">Klik untuk buka/tutup</span>
+                                </summary>
+                                <div class="mt-3 space-y-4 pt-3 border-t border-sage-200">
+                                    <div class="overflow-x-auto rounded-xl border border-sage-200 bg-white">
+                                        <table class="w-full text-[11px] text-left">
+                                            <thead class="bg-forest-900 text-gold-400 font-bold">
+                                                <tr>
+                                                    <th class="p-2">Alasan PHK</th>
+                                                    <th class="p-2">PP 35/2021</th>
+                                                    <th class="p-2">UU 27/2026</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-sage-200">
+                                                <tr><td class="p-2 font-medium">Usia Pensiun (Pasal 247)</td><td class="p-2 text-slate-500">1,75&times; UP + 1&times; UPMK</td><td class="p-2 font-bold text-forest-700">2&times; UP + 1&times; UPMK</td></tr>
+                                                <tr><td class="p-2 font-medium">Tutup Rugi / Pailit / Force Majeure</td><td class="p-2 text-slate-500">0,5&times; UP + 1&times; UPMK</td><td class="p-2 font-bold text-forest-700">1&times; UP + 1&times; UPMK</td></tr>
+                                                <tr><td class="p-2 font-medium">Pelanggaran Setelah SP 1, 2, 3</td><td class="p-2 text-slate-500">0,5&times; UP + 1&times; UPMK</td><td class="p-2 font-bold text-forest-700">1&times; UP + 1&times; UPMK</td></tr>
+                                                <tr><td class="p-2 font-medium">Merger: Pengusaha Menolak</td><td class="p-2 text-slate-500">1&times; UP + 1&times; UPMK</td><td class="p-2 font-bold text-forest-700">2&times; UP + 1&times; UPMK</td></tr>
+                                                <tr><td class="p-2 font-medium">Tutup Permanen Bukan Rugi</td><td class="p-2 text-slate-500">1&times; UP + 1&times; UPMK</td><td class="p-2 font-bold text-forest-700">1&times; UP + 1,5&times; UPMK</td></tr>
+                                                <tr><td class="p-2 font-medium">Sakit Berkepanjangan (&gt;12 Bln)</td><td class="p-2 text-slate-500">2&times; UP + 1&times; UPMK</td><td class="p-2 font-bold text-forest-700">2&times; UP + 2&times; UPMK</td></tr>
+                                                <tr><td class="p-2 font-medium">Pekerja Meninggal Dunia</td><td class="p-2 text-slate-500">2&times; UP + 1&times; UPMK</td><td class="p-2 font-bold text-forest-700">2&times; UP + 1&times; UPMK</td></tr>
+                                                <tr><td class="p-2 font-medium">Resign / Mangkir 5 Hari</td><td class="p-2 text-slate-500">UPH + Uang Pisah</td><td class="p-2 font-bold text-forest-700">UPH + Uang Pisah (min. 1 bln upah)</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div class="overflow-x-auto rounded-xl border border-sage-200 bg-white">
+                                            <table class="w-full text-[11px] text-left">
+                                                <thead class="bg-forest-900 text-gold-400 font-bold">
+                                                    <tr><th class="p-2">Masa Kerja</th><th class="p-2">UP</th><th class="p-2">UPMK</th></tr>
+                                                </thead>
+                                                <tbody class="divide-y divide-sage-200">
+                                                    <tr><td class="p-2">&lt; 1 thn</td><td class="p-2">1 bln</td><td class="p-2">-</td></tr>
+                                                    <tr><td class="p-2">1 - &lt; 2 thn</td><td class="p-2">2 bln</td><td class="p-2">-</td></tr>
+                                                    <tr><td class="p-2">2 - &lt; 3 thn</td><td class="p-2">3 bln</td><td class="p-2">-</td></tr>
+                                                    <tr><td class="p-2">3 - &lt; 6 thn</td><td class="p-2">4&ndash;6 bln</td><td class="p-2">2 bln</td></tr>
+                                                    <tr><td class="p-2">6 - &lt; 9 thn</td><td class="p-2">7&ndash;9 bln</td><td class="p-2">3 bln</td></tr>
+                                                    <tr><td class="p-2">9 - &lt; 24 thn</td><td class="p-2">9 bln</td><td class="p-2">4&ndash;8 bln</td></tr>
+                                                    <tr><td class="p-2">24+ thn</td><td class="p-2">9 bln</td><td class="p-2">10 bln</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="overflow-x-auto rounded-xl border border-sage-200 bg-white">
+                                            <table class="w-full text-[11px] text-left">
+                                                <thead class="bg-forest-900 text-gold-400 font-bold">
+                                                    <tr><th class="p-2">Bruto Pesangon</th><th class="p-2">PPh 21 Final</th></tr>
+                                                </thead>
+                                                <tbody class="divide-y divide-sage-200">
+                                                    <tr><td class="p-2">s.d. Rp 50 Juta</td><td class="p-2 font-bold text-forest-700">0% (Bebas)</td></tr>
+                                                    <tr><td class="p-2">&gt; Rp 50 Jt &ndash; 100 Jt</td><td class="p-2">5%</td></tr>
+                                                    <tr><td class="p-2">&gt; Rp 100 Jt &ndash; 500 Jt</td><td class="p-2">15%</td></tr>
+                                                    <tr><td class="p-2">&gt; Rp 500 Juta</td><td class="p-2">25%</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
                         </div>
 
                         <!-- PANEL 5: KALKULATOR CICILAN PINJAMAN -->
@@ -809,7 +890,7 @@
                         <ul class="space-y-3 text-sm mb-8">
                             <li class="flex items-start gap-2.5">
                                 <i data-lucide="check-circle-2" class="hp-check w-5 h-5 text-forest-700 shrink-0 mt-0.5"></i>
-                                <span>Kamar Perawatan VIP / 1 Tempat Tidur</span>
+                                <span>Kamar Perawatan : Standard Room - 1 Tempat Tidur Sesuai Tagihan</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <i data-lucide="check-circle-2" class="hp-check w-5 h-5 text-forest-700 shrink-0 mt-0.5"></i>
@@ -852,7 +933,7 @@
                         <h3 class="hp-title font-editorial text-2xl font-bold mb-1">2. Wilayah Asia</h3>
                         <p class="hp-subtitle text-xs font-bold text-gold-600 mb-3">*(kecuali Hongkong, Jepang, Singapura)*</p>
                         <p class="hp-desc text-sm text-forest-800/80 leading-relaxed mb-6">
-                            Akses pengobatan lintas negara Asia (seperti Malaysia, Penang, Melaka, Thailand, Taiwan) dengan standar medis internasional dan limit tahunan besar.
+                            Akses pengobatan lintas negara Asia (seperti : Malaysia, Penang, Melaka, Thailand, Taiwan, Korea) dengan standar medis internasional dan limit tahunan besar.
                         </p>
 
                         <ul class="space-y-3 text-sm mb-8">
@@ -862,7 +943,7 @@
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <i data-lucide="check-circle-2" class="hp-check w-5 h-5 text-forest-700 shrink-0 mt-0.5"></i>
-                                <span>Kamar VIP / 1 Tempat Tidur Sesuai Tagihan</span>
+                                <span>Kamar Perawatan : Standard Room - 1 Tempat Tidur Sesuai Tagihan</span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <i data-lucide="check-circle-2" class="hp-check w-5 h-5 text-forest-700 shrink-0 mt-0.5"></i>
@@ -896,13 +977,13 @@
 
                         <h3 class="hp-title font-editorial text-2xl font-bold mb-2">3. Seluruh Dunia</h3>
                         <p class="hp-desc text-sm text-forest-800/80 leading-relaxed mb-6">
-                            Perlindungan medis tanpa batas wilayah global termasuk Singapura, Jepang, Hongkong, Eropa, hingga Amerika Serikat untuk kualitas perawatan terbaik di dunia.
+                            Perlindungan medis tanpa batas wilayah global termasuk Singapura, Jepang, Hongkong, Eropa, untuk kualitas perawatan terbaik di dunia.
                         </p>
 
                         <ul class="space-y-3 text-sm mb-8">
                             <li class="flex items-start gap-2.5">
                                 <i data-lucide="check-circle-2" class="hp-check w-5 h-5 text-forest-700 shrink-0 mt-0.5"></i>
-                                <span>Cover Global Termasuk SNG, JPN, HKG &amp; USA</span>
+                                <span>Cover Global : World Wide [Ex :USA] </span>
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <i data-lucide="check-circle-2" class="hp-check w-5 h-5 text-forest-700 shrink-0 mt-0.5"></i>
@@ -985,7 +1066,7 @@
                             <option value="krk">Kalkulator Kredit Rekening Koran</option>
                             <option value="invest">Kalkulator Investasi</option>
                             <option value="edu">Kalkulator Dana Pendidikan Anak</option>
-                            <option value="pesangon">Kalkulator Dana Pesangon (PP 35/2021)</option>
+                            <option value="pesangon">Kalkulator Dana Pesangon PHK (UU 27/2026)</option>
                             <option value="cicilan">Kalkulator Cicilan Pinjaman</option>
                         </select>
                         <div class="p-3.5 rounded-xl bg-white border border-sage-200 text-xs text-forest-800">
@@ -1644,6 +1725,7 @@
                 document.getElementById('pesSalary').value = '0';
                 document.getElementById('pesTenure').value = '0';
                 document.getElementById('pesReason').value = 'pensiun';
+                if (document.getElementById('pesUph')) document.getElementById('pesUph').value = '0';
                 calcPesangon();
             } else if (currentActiveCalc === 'cicilan') {
                 document.getElementById('cicAmount').value = '0';
@@ -1844,78 +1926,122 @@
             );
         }
 
-        // 4. Kalkulator Dana Pesangon (PP No. 35 Tahun 2021)
+        // 4. Kalkulator Dana Pesangon PHK (UU No. 27 Tahun 2026 & PPh 21 Final)
         function calcPesangon() {
-            const salary = parseIDR(document.getElementById('pesSalary').value);
-            const tenure = parseFloat(document.getElementById('pesTenure').value) || 0;
+            const gaji = parseIDR(document.getElementById('pesSalary').value);
+            const years = parseFloat(document.getElementById('pesTenure').value) || 0;
             const reason = document.getElementById('pesReason').value;
+            const uphEl = document.getElementById('pesUph');
+            const uph = uphEl ? parseIDR(uphEl.value) : 0;
 
-            // UP Multiplier based on PP 35/2021 Article 40(2)
-            let upMonths = 0;
-            if (salary > 0 && tenure > 0) {
-                if (tenure < 1) upMonths = 1;
-                else if (tenure < 2) upMonths = 2;
-                else if (tenure < 3) upMonths = 3;
-                else if (tenure < 4) upMonths = 4;
-                else if (tenure < 5) upMonths = 5;
-                else if (tenure < 6) upMonths = 6;
-                else if (tenure < 7) upMonths = 7;
-                else if (tenure < 8) upMonths = 8;
-                else upMonths = 9;
+            let baseUP = 0;
+            if (gaji > 0 && years > 0) {
+                if (years < 1) baseUP = 1;
+                else if (years < 2) baseUP = 2;
+                else if (years < 3) baseUP = 3;
+                else if (years < 4) baseUP = 4;
+                else if (years < 5) baseUP = 5;
+                else if (years < 6) baseUP = 6;
+                else if (years < 7) baseUP = 7;
+                else if (years < 8) baseUP = 8;
+                else baseUP = 9;
             }
 
-            // UPMK Multiplier based on PP 35/2021 Article 40(3)
-            let upmkMonths = 0;
-            if (salary > 0 && tenure >= 3) {
-                if (tenure < 6) upmkMonths = 2;
-                else if (tenure < 9) upmkMonths = 3;
-                else if (tenure < 12) upmkMonths = 4;
-                else if (tenure < 15) upmkMonths = 5;
-                else if (tenure < 18) upmkMonths = 6;
-                else if (tenure < 21) upmkMonths = 7;
-                else if (tenure < 24) upmkMonths = 8;
-                else upmkMonths = 10;
+            let baseUPMK = 0;
+            if (gaji > 0 && years >= 3) {
+                if (years < 6) baseUPMK = 2;
+                else if (years < 9) baseUPMK = 3;
+                else if (years < 12) baseUPMK = 4;
+                else if (years < 15) baseUPMK = 5;
+                else if (years < 18) baseUPMK = 6;
+                else if (years < 21) baseUPMK = 7;
+                else if (years < 24) baseUPMK = 8;
+                else baseUPMK = 10;
             }
 
-            let upFactor = 1.75;
-            let upmkFactor = 1;
-            let reasonLabel = 'Pensiun Normal';
+            let multUP = 1;
+            let multUPMK = 1;
+            let reasonLabel = 'Memasuki Usia Pensiun';
+            let regNote = '';
 
-            if (reason === 'efisiensi') {
-                upFactor = 1;
-                upmkFactor = 1;
-                reasonLabel = 'Efisiensi / Tutup Perusahaan';
+            if (reason === 'pensiun') {
+                multUP = 2;
+                multUPMK = 1;
+                reasonLabel = 'Usia Pensiun (2x UP + 1x UPMK)';
+                regNote = '2&times; UP + 1&times; UPMK (Pasal 247 UU 27/2026 &mdash; naik dari 1,75&times; UP pada PP 35/2021)';
+            } else if (reason === 'merger_tolak') {
+                multUP = 2;
+                multUPMK = 1;
+                reasonLabel = 'Merger/Akuisisi Ditolak Pengusaha';
+                regNote = '2&times; UP + 1&times; UPMK (Pasal 236 ayat 2 UU 27/2026 &mdash; naik dari 1&times; UP pada PP 35/2021)';
+            } else if (reason === 'sakit') {
+                multUP = 2;
+                multUPMK = 2;
+                reasonLabel = 'Sakit Berkepanjangan >12 Bln';
+                regNote = '2&times; UP + 2&times; UPMK (UU 27/2026 &mdash; UPMK naik dari 1&times; menjadi 2&times;)';
             } else if (reason === 'meninggal') {
-                upFactor = 2;
-                upmkFactor = 1;
-                reasonLabel = 'Meninggal Dunia';
+                multUP = 2;
+                multUPMK = 1;
+                reasonLabel = 'Pekerja Meninggal Dunia';
+                regNote = '2&times; UP + 1&times; UPMK (Pasal 249 UU 27/2026)';
+            } else if (reason === 'tutup_nonrugi') {
+                multUP = 1;
+                multUPMK = 1.5;
+                reasonLabel = 'Tutup Permanen Bukan Rugi';
+                regNote = '1&times; UP + 1,5&times; UPMK (UU 27/2026 &mdash; UPMK naik dari 1&times; menjadi 1,5&times;)';
+            } else if (reason === 'tutup_rugi') {
+                multUP = 1;
+                multUPMK = 1;
+                reasonLabel = 'Tutup Rugi / Pailit / Force Majeure';
+                regNote = '1&times; UP + 1&times; UPMK (Pasal 237&ndash;240 UU 27/2026 &mdash; pengali 0,5&times; di PP 35/2021 dihapus)';
+            } else if (reason === 'sp3') {
+                multUP = 1;
+                multUPMK = 1;
+                reasonLabel = 'Pelanggaran Setelah SP 1, 2, 3';
+                regNote = '1&times; UP + 1&times; UPMK (Pasal 244 UU 27/2026 &mdash; pengali 0,5&times; di PP 35/2021 dihapus)';
             } else if (reason === 'resign') {
-                upFactor = 0;
-                upmkFactor = 0;
-                reasonLabel = 'Mengundurkan Diri';
+                multUP = 0;
+                multUPMK = 0;
+                reasonLabel = 'Resign / Mangkir 5 Hari';
+                regNote = 'UPH + Uang Pisah min. 1 bulan upah jika belum diatur di PK/PP/PKB (Pasal 233 UU 27/2026)';
             }
 
-            const totalUP = salary * upMonths * upFactor;
-            const totalUPMK = salary * upmkMonths * upmkFactor;
-            // Estimasi UPH (cuti tahunan / hak lain-lain rata-rata ~ 15% referensi atau hak normatif)
-            const totalUPH = (salary > 0 && tenure > 0) ? (reason === 'resign' ? salary * 0.5 : (totalUP + totalUPMK) * 0.15) : 0;
-            const grandTotal = totalUP + totalUPMK + totalUPH;
+            const valUP = (reason === 'resign') ? 0 : (gaji * baseUP * multUP);
+            const valUPMK = (reason === 'resign') ? 0 : (gaji * baseUPMK * multUPMK);
+            const bruto = valUP + valUPMK + uph;
 
-            const summary = `Dana Pesangon (PP 35/2021 - ${reasonLabel}): Upah ${formatIDR(salary)}, Masa Kerja ${tenure} thn -> UP ${formatIDR(totalUP)}, UPMK ${formatIDR(totalUPMK)}, Estimasi UPH ${formatIDR(totalUPH)}, Total ${formatIDR(grandTotal)}.`;
+            // Tarif Pajak PPh 21 Final Pesangon (PP 68/2009 / PMK 16/2010)
+            let tax = 0;
+            if (bruto > 50000000) {
+                const tier1 = Math.min(bruto - 50000000, 50000000);
+                tax += tier1 * 0.05;
+            }
+            if (bruto > 100000000) {
+                const tier2 = Math.min(bruto - 100000000, 400000000);
+                tax += tier2 * 0.15;
+            }
+            if (bruto > 500000000) {
+                const tier3 = bruto - 500000000;
+                tax += tier3 * 0.25;
+            }
 
-            const advice = grandTotal > 0
-                ? `Total kewajiban pesangon sebesar <strong>${formatIDR(grandTotal)}</strong> (${reasonLabel}). Wawie membantu perusahaan mencadangkan dana pesangon secara terstruktur melalui program <em>Employee Benefit / Dana Pensiun</em> agar arus kas bisnis tetap sehat dan efisien secara pajak.`
-                : `Masukkan <strong>Gaji Pokok + Tunjangan Tetap</strong> dan <strong>Masa Kerja (Tahun)</strong> untuk menghitung estimasi kewajiban pesangon sesuai PP No. 35 Tahun 2021.`;
+            const netto = bruto - tax;
+
+            const summary = `Dana Pesangon PHK (UU No. 27/2026 - ${reasonLabel}): Upah ${formatIDR(gaji)}, Masa Kerja ${years} thn -> UP ${formatIDR(valUP)}, UPMK ${formatIDR(valUPMK)}, UPH/Uang Pisah ${formatIDR(uph)}, Bruto ${formatIDR(bruto)}, PPh 21 Final ${formatIDR(tax)}, Pesangon Bersih (Netto) ${formatIDR(netto)}.`;
+
+            const advice = bruto > 0
+                ? `Berdasarkan masa kerja <strong>${years} tahun</strong> dengan acuan <strong>UU No. 27 Tahun 2026</strong> (${regNote}), total kompensasi bruto adalah <strong>${formatIDR(bruto)}</strong> dan hak bersih (<em>netto</em>) setelah PPh 21 Final sebesar <strong>${formatIDR(netto)}</strong>.<br><br><strong>Rekomendasi Wawie:</strong> Kenaikan faktor pengali di UU 27/2026 meningkatkan liabilitas pesangon perusahaan secara signifikan, dan <strong>Pasal 253 mewajibkan penyediaan Dana Cadangan Pesangon</strong> (non-UMK). Wawie membantu perusahaan menyusun pencadangan pesangon dan integrasi program pensiun yang sehat bagi arus kas bisnis.`
+                : `Masukkan <strong>Gaji Pokok + Tunjangan Tetap</strong>, <strong>Masa Kerja (Tahun)</strong>, dan <strong>UPH / Uang Pisah</strong> untuk menghitung hak pesangon bruto, potongan PPh 21 Final, dan pesangon bersih (<em>netto</em>) sesuai <strong>UU No. 27 Tahun 2026</strong>.`;
 
             renderResultPanel(
-                'Pesangon (PP 35/2021)',
-                'Total Estimasi Dana Pesangon',
-                formatIDR(grandTotal),
+                'Pesangon PHK (UU 27/2026)',
+                'Total Pesangon Bersih (Netto)',
+                formatIDR(netto),
                 [
-                    { label: `Uang Pesangon (${upFactor}x UP)`, value: formatIDR(totalUP) },
-                    { label: `UPMK (${upmkFactor}x)`, value: formatIDR(totalUPMK) },
-                    { label: 'Estimasi UPH / Hak Lain', value: formatIDR(totalUPH) },
-                    { label: 'Masa Kerja & Alasan', value: `${tenure} Thn (${reasonLabel})` }
+                    { label: `Uang Pesangon (${multUP}x UP)`, value: formatIDR(valUP) },
+                    { label: `Uang Penghargaan (${multUPMK}x UPMK)`, value: formatIDR(valUPMK) },
+                    { label: 'Total Kompensasi Bruto', value: formatIDR(bruto) },
+                    { label: 'Potongan PPh 21 Final', value: '- ' + formatIDR(tax) }
                 ],
                 advice,
                 summary
@@ -2352,7 +2478,7 @@
                     },
                     {
                         tag: 'PESANGON & LIKUIDITAS (3/4)',
-                        heading: 'Pencadangan Dana Pesangon Sesuai PP 35/2021',
+                        heading: 'Pencadangan Dana Pesangon Sesuai UU 27/2026',
                         body: 'Menyiapkan cadangan pesangon sejak dini menjaga arus kas perusahaan tetap stabil sekaligus meningkatkan loyalitas karyawan kunci.'
                     },
                     {
